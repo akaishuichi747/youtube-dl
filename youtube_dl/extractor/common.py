@@ -2357,7 +2357,7 @@ class InfoExtractor(object):
                 # TODO: add support for WVC1 and WMAP
                 #if fourcc not in ('H264', 'AVC1', 'AACL', 'HEV1', 'EC-3', 'AACH'):
                     #self.report_warning('%s is not a supported codec' % fourcc)
-                    continue
+                continue
                 tbr = int(track.attrib['Bitrate']) // 1000
                 # [1] does not mention Width and Height attributes. However,
                 # they're often present while MaxWidth and MaxHeight are
