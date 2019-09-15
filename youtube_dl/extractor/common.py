@@ -2353,9 +2353,9 @@ class InfoExtractor(object):
             stream_timescale = int_or_none(stream.get('TimeScale')) or timescale
             stream_name = stream.get('Name')
             for track in stream.findall('QualityLevel'):
-                fourcc = track.get('FourCC', 'HEV1')
+                fourcc = track.get('FourCC', 'HEV1' if track.get('Bitrate') == '15000000' else None)
                 # TODO: add support for WVC1 and WMAP
-                if fourcc not in ('H264', 'AVC1', 'HEV1'):
+                if fourcc not in ('H264', 'AVC1', 'AACL', 'HEV1', 'EC-3', 'AACH'):
                     self.report_warning('%s is not a supported codec' % fourcc)
                     continue
                 tbr = int(track.attrib['Bitrate']) // 1000
